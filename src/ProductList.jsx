@@ -285,7 +285,7 @@ function ProductList() {
                     <div> 
                         <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
                             <h1 className='cart'>
-                                <label className='cart_quantity_count'>{cartCount()}</label>
+                                <label className='cart_quantity_count' style={{cursor: "pointer"}}>{cartCount()}</label>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68">
                                     <rect width="156" height="156" fill="none"></rect>
                                     <circle cx="80" cy="216" r="12"></circle>
@@ -309,7 +309,10 @@ function ProductList() {
                                 <div className="product-title">{plant.name}</div>
                                 <div>{plant.description}</div>
                                 <div className="product-price">{plant.cost}</div>
-                                <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                { cart.some(item => item.name == plant.name) ?
+                                    ( <button className="product-button added-to-cart">Added to Cart</button> )
+                                    : ( <button className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button> )
+                                } 
                             </div>
                             ))}
                         </div>
