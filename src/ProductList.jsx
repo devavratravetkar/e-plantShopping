@@ -255,10 +255,8 @@ function ProductList() {
 
     const handleAddToCart = (product) => {
         dispatch(addItem(product));
-        setAddedToCart((prevState) => ({
-            ...prevState,
-            [product.name]: true, // Set the product name as key and value as true to indicate it's added to cart
-        }));
+        setAddedToCart((prevState) => ({...prevState, [product.name]: true,})); 
+        // Set the product name as key and value as true to indicate it's added to cart
     };
 
     return (
@@ -292,7 +290,6 @@ function ProductList() {
                                 <div className="product-title">{plant.name}</div>
                                 <div>{plant.description}</div>
                                 <div className="product-price">{plant.cost}</div>
-                                {/*Similarly like the above plant.name show other details like description and cost*/}
                                 <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
                             </div>
                             ))}
